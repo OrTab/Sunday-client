@@ -1,0 +1,243 @@
+.card-preview {
+    display: flex;
+    // grid-template-columns: 7px minmax(212px, 1fr) 40px 75px 125px 125px 125px 125px 7px;
+    outline-style: none;
+    grid-gap: 2px;
+    min-width: 848px;
+    margin: 0.1em 0;
+    height: 36px;
+    margin-left: 30px;
+    font-size: rem(13px);
+    &:hover {
+        & > div {
+            background-color: $lightgrey;
+        }
+        & .card-title {
+            color: $blue;
+        }
+    }
+
+    & svg {
+        transition: fill 0.2s ease;
+        width: 25px;
+        height: 25px;
+        fill: $grey;
+        cursor: pointer;
+
+        &:hover {
+            fill: $black;
+        }
+    }
+
+    & .editable-element {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        padding: 0 2px;
+        //width: auto;
+    }
+
+    & .card-members {
+        cursor: pointer;
+
+        & .members-count-badge {
+            transition: 0.2s ease;
+            position: absolute;
+            background-color: $grey;
+            color: $white;
+            width: 20px;
+            font-size: 0.8rem;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            top: 12%;
+            opacity: 0;
+            z-index: 10;
+            left: 0;
+        }
+        &:hover .members-count-badge {
+            opacity: 1;
+        }
+    }
+
+    .card-closer {
+        background-color: #e6e9ef;
+    }
+
+    & > div:not(:nth-child(2)) {
+        justify-content: center;
+    }
+
+    & > div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        background-color: $verylightgrey;
+        transition: background 0.2s ease;
+
+        & > a {
+            display: flex;
+        }
+    }
+    & .card-title {
+        padding: 0 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: baseline;
+        transition: color, 0.2s ease;
+        // // width: 100%;
+        // min-width: 212px;
+        // max-width: 480px;
+        flex: 1;
+       
+
+        & .editable-element {
+            flex-grow: 1;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            &:focus {
+                color: $blue;
+            }
+        }
+        & svg {
+            visibility: hidden;
+            color: $grey;
+        }
+        &:hover svg {
+            visibility: visible;
+        }
+    }
+}
+
+.members {
+    background-color: #fff;
+    z-index: 5;
+    width: 250px;
+    border-radius: 5px;
+    top: 35px;
+    right: 0;
+    padding: 0 10px;
+    box-shadow: 0 3px 10px -5px #484444;
+    position: absolute;
+    top: 0;
+    right: 40%;
+
+    & h3:last-child {
+        margin-top: 20px;
+    }
+    img {
+        cursor: pointer;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        border: 2px solid #f1f1f1;
+    }
+}
+
+.user-thumbnail {
+    transition: background 0.1s ease;
+    background-color: $blue;
+    color: $white;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.member-empty-avatar {
+    box-sizing: content-box;
+    text-align: center;
+    line-height: 30px;
+    color: $black !important;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    border: 1px solid $black;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.2s ease !important;
+}
+
+.card-workingDays {
+    justify-content: center;
+}
+
+.multiple-members-display {
+    & .user-thumbnail:nth-child(1) {
+        position: absolute;
+        left: 15%;
+        z-index: 2;
+    }
+    & .user-thumbnail:nth-child(2) {
+        position: absolute;
+        z-index: 1;
+        left: 40%;
+    }
+}
+.card-members-cell {
+    // width: 20px;
+    min-width: 75px;
+    flex-basis: 70px;
+}
+
+.card-cell {
+    min-width: 145px;
+    flex-basis: 145px;
+    width: 145px;
+}
+
+.card-cell-small {
+    width: 7px;
+    min-width: 7px;
+    flex-basis: 7px;
+}
+
+@media (max-width: 768px) {
+    .card-preview {
+
+        & > div{
+            margin:  0 1px;
+        }
+        .card-title {
+            flex: 0.9;
+            & svg {
+                visibility: visible;
+            }
+        }
+    }
+
+    .card-members{
+
+        & .user-thumbnail{
+            line-height: 25px;
+            width: 25px;
+            height: 25px;
+            object-fit: cover;
+        }
+    }
+
+    .card-members-cell {
+        width: 45px;
+        min-width: 45px;
+        flex-basis: 45px;
+    }
+
+    .card-cell {
+        min-width: 120px;
+        flex-basis: 120px;
+        width: 120px;
+    }
+
+    .card-cell-small {
+        width: 7px;
+        min-width: 7px;
+        flex-basis: 7px;
+    }
+}
